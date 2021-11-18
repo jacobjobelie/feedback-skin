@@ -1,0 +1,33 @@
+{
+  "name": "@fbw/server",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "scripts": {
+    "serve": "cross-env NODE_ENV=production run-s -n -l clean predev:proxy env:prod serve:server",
+    "serve:server": "NODE_ENV=production node --trace-warnings ./dist/index.js",
+    "clean": "rm -rf configs",
+    "predev": "run-s -n -l 'predev:*'",
+    "preprod": "yarn clean && yarn env:dev",
+    "dev": "cross-env NODE_ENV=development PORT=3003 run-s -n -l 'devdev' ",
+    "devdev": "cross-env NODE_ENV=development  run-p -n -l 'dev:*'",
+    "compile": "ts-node ./esbuild.ts",
+    "env:dev": "chmod +x ../../dev/sh/copy-envs.js && ../../dev/sh/copy-envs.js ../.. development",
+    "env:prod": "chmod +x ../../dev/sh/copy-envs.js && ../../dev/sh/copy-envs.js ../.. production",
+    "dev:server": "NODE_ENV=development tsnd --exit-child --respawn  src/socketpeer.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "@types/ws": "^8",
+    "npm-run-all": "^4.1.5",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "@signal-fire/server": "^0.5.0",
+    "bufferutil": "^4.0.5",
+    "cross-env": "^7.0.3",
+    "utf-8-validate": "^5.0.7",
+    "ws": "^8.2.3"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  // BABEL: https://github.com/microsoft/TypeScript-Babel-Starter
+  // https://www.typescriptlang.org/docs/handbook/compiler-options.html
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "strict": true,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": ["**/*/node_modules/**/*", "**/*/dist/**/*"]
+}
